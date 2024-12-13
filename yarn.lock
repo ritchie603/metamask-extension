@@ -6065,15 +6065,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@metamask/remote-feature-flag-controller@npm:^1.2.0":
+"@metamask/remote-feature-flag-controller@file:../core/packages/remote-feature-flag-controller::locator=metamask-crx%40workspace%3A.":
   version: 1.2.0
-  resolution: "@metamask/remote-feature-flag-controller@npm:1.2.0"
+  resolution: "@metamask/remote-feature-flag-controller@file:../core/packages/remote-feature-flag-controller#../core/packages/remote-feature-flag-controller::hash=f0956c&locator=metamask-crx%40workspace%3A."
   dependencies:
     "@metamask/base-controller": "npm:^7.0.2"
     "@metamask/utils": "npm:^10.0.0"
     cockatiel: "npm:^3.1.2"
-    uuid: "npm:^8.3.2"
-  checksum: 10/865934e120f039296738134e8f32cb1f6535b393b916764b1e464db75f6c1d26591d7c23a65be60b11a63c99c4f4894f8ab0d611b466e8f9bb83dcced7ea567f
+  checksum: 10/1976840166e4cff44c92591161e9c0cdebcb7917d26a691bef626f196e9af22ec25675cd03c7328093f67fe3b9be16107e16ae39546367b81c5113185e723a74
   languageName: node
   linkType: hard
 
@@ -26555,7 +26554,7 @@ __metadata:
     "@metamask/providers": "npm:^18.2.0"
     "@metamask/queued-request-controller": "npm:^7.0.1"
     "@metamask/rate-limit-controller": "npm:^6.0.0"
-    "@metamask/remote-feature-flag-controller": "npm:^1.2.0"
+    "@metamask/remote-feature-flag-controller": "file:../core/packages/remote-feature-flag-controller"
     "@metamask/rpc-errors": "npm:^7.0.0"
     "@metamask/safe-event-emitter": "npm:^3.1.1"
     "@metamask/scure-bip39": "npm:^2.0.3"
