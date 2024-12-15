@@ -5,11 +5,13 @@ on:
     branches:
       - main
       - master
+      - stable
+      - gh-readonly-queue.*
+      - Version-v[0-9]+.[0-9]+.[0-9]+
+      - trigger-ci.*
+      - prep-deps-and-self-hosted
   pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
+    types: [opened, reopened, synchronize]
   merge_group:
 
 jobs:
@@ -25,23 +27,40 @@ jobs:
         shell: bash
 
       - name: Check workflow files
-        run: ${{ steps.download-actionlint.outputs.executable }} -color
+        # The ignore is necessary because `gha-mm-scale-set-ubuntu-22.04-amd64-med` is unknown
+        run: ${{ steps.download-actionlint.outputs.executable }} -color -ignore 'label ".+" is unknown'
         shell: bash
 
+  prep-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup environment
+        uses: MetaMask/metamask-extension/.github/actions/setup-environment@prep-deps-and-self-hosted
+        with:
+          should-cache-restore: false
+          should-cache-save: true
+
   run-tests:
-    name: Run tests
+    needs: prep-deps
     uses: ./.github/workflows/run-tests.yml
+
+  run-benchmarks:
+    needs: prep-deps
+    uses: ./.github/workflows/benchmarks.yml
 
   wait-for-circleci-workflow-status:
     name: Wait for CircleCI workflow status
     uses: ./.github/workflows/wait-for-circleci-workflow-status.yml
 
+  # Explanation for all-jobs-completed and all-jobs-pass being separate:
+  # https://github.com/MetaMask/metamask-module-template/pull/151
   all-jobs-completed:
     name: All jobs completed
     runs-on: ubuntu-latest
     needs:
       - check-workflows
       - run-tests
+      - run-benchmarks
       - wait-for-circleci-workflow-status
     outputs:
       PASSED: ${{ steps.set-output.outputs.PASSED }}
