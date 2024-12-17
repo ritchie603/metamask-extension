@@ -19,9 +19,9 @@ jobs:
         shard: [1, 2, 3, 4, 5, 6]
     steps:
       - name: Setup environment
-        uses: metamask/github-tools/.github/actions/setup-environment@${{SETUP_ENVIRONMENT_BRANCH}}
+        uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: true
+          should-cache-restore: $USE_CACHING
 
       - name: test:unit:coverage
         run: yarn test:unit:coverage --shard=${{ matrix.shard }}/${{ strategy.job-total }}
@@ -39,9 +39,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup environment
-        uses: metamask/github-tools/.github/actions/setup-environment@${{SETUP_ENVIRONMENT_BRANCH}}
+        uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: true
+          should-cache-restore: $USE_CACHING
 
       - name: test:unit:webpack:coverage
         run: yarn test:unit:webpack:coverage
@@ -59,9 +59,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup environment
-        uses: metamask/github-tools/.github/actions/setup-environment@${{SETUP_ENVIRONMENT_BRANCH}}
+        uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: true
+          should-cache-restore: $USE_CACHING
 
       - name: test:integration:coverage
         run: yarn test:integration:coverage
@@ -86,9 +86,9 @@ jobs:
       stored-coverage: ${{ steps.get-stored-coverage.outputs.STORED_COVERAGE }}
     steps:
       - name: Setup environment
-        uses: metamask/github-tools/.github/actions/setup-environment@${{SETUP_ENVIRONMENT_BRANCH}}
+        uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: true
+          should-cache-restore: $USE_CACHING
 
       - name: Download artifacts
         uses: actions/download-artifact@v4

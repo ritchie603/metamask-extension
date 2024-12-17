@@ -16,7 +16,7 @@ jobs:
       image: cimg/node:20.18-browsers
     steps:
       - name: Setup environment
-        uses: metamask/github-tools/.github/actions/setup-environment@${{SETUP_ENVIRONMENT_BRANCH}}
+        uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
           should-cache-restore: false
 
