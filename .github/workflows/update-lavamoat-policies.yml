@@ -61,7 +61,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: $USE_CACHING
+          should-cache-restore: ${{ env.USE_CACHING }}
       - name: Get commit SHA
         id: commit-sha
         run: echo "COMMIT_SHA=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
@@ -82,7 +82,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: $USE_CACHING
+          should-cache-restore: ${{ env.USE_CACHING }}
       - name: Update LavaMoat build policy
         run: yarn lavamoat:build:auto
       - name: Cache build policy
@@ -113,7 +113,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: $USE_CACHING
+          should-cache-restore: ${{ env.USE_CACHING }}
       - name: Restore build policy
         uses: actions/cache/restore@v4
         with:

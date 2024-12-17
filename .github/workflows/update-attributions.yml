@@ -61,7 +61,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: $USE_CACHING
+          should-cache-restore: ${{ env.USE_CACHING }}
       - name: Get commit SHA
         id: commit-sha
         run: echo "COMMIT_SHA=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
@@ -85,7 +85,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: $USE_CACHING
+          should-cache-restore: ${{ env.USE_CACHING }}
       - name: Generate Attributions
         run: yarn attributions:generate
       - name: Cache attributions file

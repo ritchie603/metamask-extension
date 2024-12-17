@@ -18,7 +18,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: $USE_CACHING
+          should-cache-restore: ${{ env.USE_CACHING }}
 
       - name: Close release bug report issue
         env:

@@ -40,8 +40,8 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: false
-          should-cache-save: $USE_CACHING
+          should-cache-restore: 'false'
+          should-cache-save: ${{ env.USE_CACHING }}
 
   prep-build-test-webpack:
     needs: prep-deps
@@ -50,7 +50,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: $USE_CACHING
+          should-cache-restore: ${{ env.USE_CACHING }}
 
       # should add `--env production` to this but need `SEGMENT_PROD_WRITE_KEY`
       - run: yarn webpack --test --no-lavamoat --no-cache --browser=chrome --lockdown --sentry --snow
