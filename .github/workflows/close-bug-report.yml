@@ -16,7 +16,9 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup environment
-        uses: metamask/github-tools/.github/actions/setup-environment@main
+        uses: metamask/github-tools/.github/actions/setup-environment@caching
+        with:
+          should-cache-restore: $USE_CACHING
 
       - name: Close release bug report issue
         env:
