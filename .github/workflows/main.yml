@@ -14,6 +14,10 @@ on:
     types: [opened, reopened, synchronize]
   merge_group:
 
+env:
+  USE_CACHING: true
+  SETUP_ENVIRONMENT_BRANCH: 'metamask/github-tools/.github/actions/setup-environment@caching'
+
 jobs:
   check-workflows:
     name: Check workflows
@@ -35,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup environment
-        uses: metamask/github-tools/.github/actions/setup-environment@caching
+        uses: ${{SETUP_ENVIRONMENT_BRANCH}}
         with:
           should-cache-restore: false
           should-cache-save: true
@@ -45,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Setup environment
-        uses: metamask/github-tools/.github/actions/setup-environment@caching
+        uses: ${{SETUP_ENVIRONMENT_BRANCH}}
         with:
           should-cache-restore: true
 
