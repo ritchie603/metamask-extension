@@ -6832,7 +6832,10 @@ export default class MetamaskController extends EventEmitter {
     this.controllerMessenger.subscribe(
       'BridgeStatusController:bridgeTransactionComplete',
       (payload) =>
-        handleBridgeTransactionComplete(payload, { metamask: this.getState() }),
+        handleBridgeTransactionComplete(payload, {
+          state: this.getState(),
+          metaMetricsController: this.metaMetricsController,
+        }),
     );
   }
 
