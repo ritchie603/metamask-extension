@@ -12,7 +12,6 @@ import { useHistory, useLocation } from 'react-router-dom';
 import { BigNumber } from 'bignumber.js';
 import { type TokenListMap } from '@metamask/assets-controllers';
 import {
-  setFromChain,
   setFromToken,
   setFromTokenInputValue,
   setSelectedQuote,
@@ -375,7 +374,6 @@ const PrepareBridgePage = () => {
                 ),
               );
             }
-            dispatch(setFromChain(networkConfig.chainId));
             dispatch(setFromToken(null));
             dispatch(setFromTokenInputValue(null));
           },
@@ -456,7 +454,6 @@ const PrepareBridgePage = () => {
                       .networkClientId
                   : undefined;
               toChainClientId && dispatch(setActiveNetwork(toChainClientId));
-              toChain && dispatch(setFromChain(toChain.chainId));
               dispatch(setFromToken(toToken));
               dispatch(setFromTokenInputValue(null));
               fromChain?.chainId && dispatch(setToChain(fromChain.chainId));
