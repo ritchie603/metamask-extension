@@ -273,7 +273,7 @@ export default class Routes extends Component {
     if (prevProps.account?.address !== account?.address) {
       this.setState({ hideConnectAccountToast: false });
     }
-
+    /*
     // Automatically switch the network if the user
     // no longer has unapproved transactions and they
     // should be on a different network for the
@@ -289,7 +289,7 @@ export default class Routes extends Component {
         activeTabOrigin,
       );
     }
-
+    */
     // Terminate the popup when another popup is opened
     // if the user is using RPC queueing
     if (
