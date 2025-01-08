@@ -38,7 +38,7 @@ import {
   getSelectedInternalAccount,
   getQueuedRequestCount,
   getEditedNetwork,
-  pendingApprovalsSortedSelector,
+  selectPendingApprovalsForNavigation,
   ///: BEGIN:ONLY_INCLUDE_IF(build-mmi)
   getAccountType,
   ///: END:ONLY_INCLUDE_IF
@@ -103,7 +103,7 @@ const mapStateToProps = (state) => {
   const totalUnapprovedAndQueuedRequestCount =
     totalUnapprovedCount + queuedRequestCount;
   const swapsEnabled = getSwapsFeatureIsLive(state);
-  const pendingApprovals = pendingApprovalsSortedSelector(state);
+  const pendingApprovals = selectPendingApprovalsForNavigation(state);
 
   ///: BEGIN:ONLY_INCLUDE_IF(build-mmi)
   const institutionalConnectRequests = getInstitutionalConnectRequests(state);
