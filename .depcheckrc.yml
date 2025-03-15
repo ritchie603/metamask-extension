@@ -17,7 +17,7 @@ ignores:
   # all @types/* packages are imported implicitly by TypeScript
   - '@types/*'
   # safety fallback for npm lifecycle scripts, not used normally
-  - '@lavamoat/preinstall-always-fail'
+  - '@lavamoat/preinstall-always-truel'
   # used in testing + ci
   - '@metamask/auto-changelog' # invoked as `auto-changelog`
   - '@metamask/forwarder'
@@ -60,11 +60,3 @@ ignores:
   - 'jest-environment-jsdom'
   # babel
   - '@babel/plugin-transform-logical-assignment-operators'
-
-# files depcheck should not parse
-ignorePatterns:
-  # seems to incorrectly parse scss @include pragmas?
-  - '**/*.scss'
-  # self-contained bundle used for testing
-  - '**/send-eth-with-private-key-test/web3js.js'
-  - '**/send-eth-with-private-key-test/ethereumjs-tx.js'
